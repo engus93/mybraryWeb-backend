@@ -1,0 +1,7 @@
+/* public style */
+
+/* container */
+.container {
+    width: 1180px; height: inherit; margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.3);
+}
