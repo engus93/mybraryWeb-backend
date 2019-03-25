@@ -1,11 +1,22 @@
 /* 로그인 페이지 CSS */
+body {background: url(../img/sign_bg.jpg) no-repeat center center fixed; background-size: cover; z-index: -1;}
+.bg_color {background-color: rgba(0, 0, 0, 0.6); z-index: 1;}
 
-#header {}
-#main {}
-#fooer {}
+#main { display: flex;  justify-content: center; align-items: center; min-height: 100vh;}
+
+.sign_container {width: 900px; margin: 0 auto;}
 
 /* main_box */
-.main_box {overflow: hidden;}
+.main_box {overflow: hidden; display: flex;  justify-content: center; align-items: center;}
 
-.left_box {float: left; width: 50%; height: 700px; background-color: #aaa;}
-.right_box {float: left; width: 50%; height: 700px; background-color: #bbb;}
+.left_box {float: left; width: 50%; text-align: center;}
+.right_box {float: left; width: 40%; margin: 5%;}
+.right_box .signUp_box { background-color: rgba(0, 0, 0, 0.5);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    padding: 20px 5px;}
+.right_box .signUp_box h1 {font-size: 40px; padding: 20px 30px; color: #fff;}
+.right_box .signUp_box form input {display: block; width: 100%; padding: 5px; box-sizing: border-box; margin-top: 20px; font-size: 14px;}
+.right_box .signUp_box form button {display: block; width: 100%; padding: 5px 100px; box-sizing: border-box; margin: 20px 0;}
+.right_box .signUp_box p {text-align: center; color: #fff;}
+.right_box .signIn_box {text-align: center; padding: 20px 30px; margin-top: 30px; font-size: 14px; color: #fff;}
+.right_box .signIn_box a {margin-left: 10px; color: blue;}
