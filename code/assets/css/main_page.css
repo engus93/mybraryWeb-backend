@@ -1,0 +1,27 @@
+/* 메인 페이지 */
+
+/* 레이아웃 */
+#header {height: 60px; background-color: #aaa;}
+
+#base_banner {height: 60px; background-color: #bbb;}
+
+#main_banner {height: 500px; background-color: #ccc;}
+
+#contents {height: 1000px; background-color: #ddd;}
+
+#footer {height: 100px; background-color: #eee;}
+
+/* header */
+.header {}
+
+/* base_banner */
+.base_banner {}
+
+/* main_banner */
+.main_banner {}
+
+/* contents */
+.contents {}
+
+/* footer */
+.footer {}
