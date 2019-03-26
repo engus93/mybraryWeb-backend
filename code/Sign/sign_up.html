@@ -8,11 +8,11 @@
     <meta name="author" content="Duveloper">
     <meta name="description" content="MyBrary">
     <meta name="keywords" content="독서, 소통, 서평, 베스트셀러, 화제의 책">
-    <title>MyBrary</title>
+    <title>회원가입 | MyBrary</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/sign_in.css">
+    <link rel="stylesheet" href="../assets/css/sign_up.css">
     <link rel="stylesheet" href="../assets/css/reset.css">
 
     <!-- Web Font -->
@@ -36,16 +36,16 @@
                         </h1>
                         <form id="signUp_form" action="#" method="POST">
                             <label for="user_id">아이디 (6 ~ 12자)</label>
-                            <input class="form_design" id="user_id" type="text" minlength="6" maxlength="12">
+                            <input class="form_design" id="user_id" name="user_id" type="text" minlength="6" maxlength="12">
                             <label for="user_pw">비밀번호 (8 ~ 16자)</label>
-                            <input class="form_design" id="user_pw" type="password" minlength="8" maxlength="16">
+                            <input class="form_design" id="user_pw" name="user_pw" type="password" minlength="8" maxlength="16">
                             <label for="user_re_pw">비밀번호 확인 (8 ~ 16자)</label>
-                            <input class="form_design" id="user_re_pw" type="password" minlength="8" maxlength="16">
+                            <input class="form_design" id="user_re_pw" name="user_re_pw" type="password" minlength="8" maxlength="16">
                             <label for="user_name">이름 (2 ~ 8자)</label>
-                            <input class="form_design" id="user_name" type="text" minlength="2" maxlength="8">
+                            <input class="form_design" id="user_name" name="user_name" type="text" minlength="2" maxlength="8">
                             <label for="user_email">이메일</label><br>
-                            <input class="form_design" id="user_email" type="email">
-                            <label for="user_name">성별</label>
+                            <input class="form_design" id="user_email" name="user_email" type="email">
+                            <label>성별</label>
                             <input class="form_design form_radio" id="user_male" name="sex" type="radio" value="남자" checked><label class="sex_label" for="user_male">남자</label>
                             <input class="form_design form_radio" id="user_female" name="sex" type="radio" value="여자"><label class="sex_label" for="user_female">여자</label>
                             <button class="form_design" id="signUp_submit" type="submit" aria-label="가입 버튼">
