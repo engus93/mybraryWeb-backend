@@ -8,55 +8,63 @@
     <meta name="author" content="Duveloper">
     <meta name="description" content="MyBrary">
     <meta name="keywords" content="독서, 소통, 서평, 베스트셀러, 화제의 책">
-    <title>MyBrary</title>
+    <title>로그인 | MyBrary</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/sign_in.css">
     <link rel="stylesheet" href="../assets/css/reset.css">
-    
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/sign_in.css">
+
     <!-- Web Font -->
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 
     <!-- 파비콘 -->
     <link rel="shortcut icon" href="../assets/icon/mybrary_icon.png">
-
 </head>
 
 <body>
-    <div class="bg_color">
-
-        <main id="main">
+    <main>
+        <section id="signIn">
             <div class="sign_container">
                 <div class="main_box">
-                    <div class="right_box">
-                        <div class="signUp_box">
+                    <div class="sign_box">
+                        <div class="signIn_box">
                             <h1>
                                 <em>m</em><em>y</em><em>b</em><em>r</em><em>a</em><em>r</em><em>y</em>
                             </h1>
-                            <form id="signUp_form" action="">
-                                <input type="text">
-                                <input type="text">
-                                <input type="text">
-                                <input type="text">
-                                <button type="submit">
-                                    가입
+                            <form id="signIn_form" action="#" method="POST">
+                                <label for="user_id">아이디</label>
+                                <input class="form_design" id="user_id" name="user_id" type="text" minlength="6" maxlength="12">
+                                <label for="user_pw">비밀번호</label>
+                                <input class="form_design" id="user_pw" name="user_pw" type="password" minlength="8" maxlength="16">
+                                <button class="form_design" id="signIn_submit" type="submit" aria-label="로그인">
+                                    로그인
                                 </button>
                             </form>
-                            <p>가입하면 Instagram의 <strong>약관</strong>, <strong>데이터 정책</strong><br>
-                                및 <strong>쿠키 정책</strong>에 동의하게 됩니다.
-                            </p>
-
                         </div>
-                        <div class="signIn_box">
-                            <p>계정이 있으신가요? <a href="#">로그인</a></p>
+                        <!-- //signIn_box -->
+    
+                        <div class="signUp_box">
+                            <p>계정이 없으신가요? <a href="./sign_up.html">회원가입</a></p>
                         </div>
+                        <!-- //signUp_box -->
+    
                     </div>
+                    <!-- //sign_box -->
+    
                 </div>
+                <!-- //main_box -->
+    
             </div>
-        </main>
+            <!-- //sign_container -->
 
-    </div>
+        </section>
+        <!-- //signIn -->
+
+    </main>
+    <!-- //main -->
+    
 </body>
 
 </html>
