@@ -1,6 +1,5 @@
 /* 로그인 페이지 CSS */
 
-
 /* background img */
 body {background: url(../img/sign_bg.jpg) no-repeat center center fixed; background-size: cover;}
 
@@ -16,8 +15,7 @@ body {background: url(../img/sign_bg.jpg) no-repeat center center fixed; backgro
 .right_box .signUp_box {display: flex; align-items: center; justify-content: center; flex-direction: column;
     padding: 20px 5px; background-color: rgba(0, 0, 0, 0.5);}
 .right_box .signIn_box { font-size: 14px; text-align: center; padding: 20px 30px; margin-top: 30px; color: #fff;}
-.right_box .signUp_box h1 {font-size: 40px; padding: 20px 30px; 
-    font-family: 'Fredericka the Great', cursive; text-transform: uppercase;}
+.right_box .signUp_box h1 {font-size: 40px; padding: 20px 30px; text-transform: uppercase; font-family: 'Fredericka the Great', cursive;}
     .right_box .signUp_box h1 em:nth-child(1) {color: #FFF8E1;}
     .right_box .signUp_box h1 em:nth-child(2) {color: #FFECB3;}
     .right_box .signUp_box h1 em:nth-child(3) {color: #FFE082;}
@@ -25,12 +23,14 @@ body {background: url(../img/sign_bg.jpg) no-repeat center center fixed; backgro
     .right_box .signUp_box h1 em:nth-child(5) {color: #FFCA28;}
     .right_box .signUp_box h1 em:nth-child(6) {color: #FFC107;}
     .right_box .signUp_box h1 em:nth-child(7) {color: #FFB300;}
-.right_box .signUp_box input {width: 70%; padding: 5px; margin-top: 20px; font-size: 14px; margin-left: 15%; box-sizing: border-box;}
-.right_box .signUp_box button {width: 70%; padding: 5px;  margin: 20px 0; font-size: 14px; margin-left: 15%; box-sizing: border-box;}
+.right_box .signUp_box .form_design {width: 70%; padding: 5px; font-size: 14px; margin-left: 15%; box-sizing: border-box; border-radius: 5px}
+.right_box .signUp_box .form_radio {width: auto; margin: 20px 0 0 25%}
+.right_box .signUp_box span {color: #fff; margin-left: 5px;}
+.right_box .signUp_box input {margin-top: 10px;}
+.right_box .signUp_box button {margin: 20px 0; font-weight: bolder; transition: all .2s ease;}
+.right_box .signUp_box button:hover {background-color: #FFC107; color: #fff; cursor: pointer;}
 .right_box .signUp_box p {text-align: center; color: #fff;}
 .right_box .signIn_box p a {margin-left: 10px; color: #fff;}
 
 /* MediaQuery */
-
-/* 0 ~ 1220px */
 
