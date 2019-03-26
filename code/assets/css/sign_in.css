@@ -4,8 +4,7 @@
 body {background: url(../img/sign_bg.jpg) no-repeat center center fixed; background-size: cover;}
 
 /* 레이아웃 */
-#main {background-color: rgba(0, 0, 0, 0.6);}
-
+#signIn {background-color: rgba(0, 0, 0, 0.6);}
 .sign_container {width: 1200px; margin: auto;}
 
 /* main_box */
