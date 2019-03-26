@@ -31,7 +31,7 @@ body {background: url(../img/sign_bg.jpg) no-repeat center center fixed; backgro
 .sign_box .signUp_box button {margin: 20px 0; font-weight: bolder; transition: background-color .25s ease;}
 .sign_box .signUp_box button:hover {background-color: #FFC107; color: #fff; cursor: pointer;}
 .sign_box .signUp_box p {text-align: center; color: #fff;}
-.sign_box .signIn_box p a {margin-left: 10px; color: #fff; font-weight: bolder; transition: background-color .3s ease;}
+.sign_box .signIn_box p a {margin-left: 10px; color: #fff; font-weight: bolder; transition: color .3s ease;}
 .sign_box .signIn_box p a:hover {color: #FFC107;}
 
 /* MediaQuery */
