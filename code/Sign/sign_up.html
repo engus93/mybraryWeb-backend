@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Duveloper">
+    <meta name="description" content="MyBrary">
+    <meta name="keywords" content="독서, 소통, 서평, 베스트셀러, 화제의 책">
+    <title>MyBrary</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/sign_in.css">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="../assets/icon/mybrary_icon.png">
+
+</head>
+
+<body>
+
+    <main id="main">
+        <div class="sign_container">
+            <div class="main_box">
+                <div class="sign_box">
+                    <div class="signUp_box">
+                        <h1>
+                            <em>m</em><em>y</em><em>b</em><em>r</em><em>a</em><em>r</em><em>y</em>
+                        </h1>
+                        <form id="signUp_form" action="#" method="POST">
+                            <label for=”user_id”>이메일</label><br>
+                            <input class="form_design" id="user_email" type="email">
+                            <label for=user_pw>비밀번호 (8 ~ 16자)</label>
+                            <input class="form_design" id="user_pw" type="password">
+                            <label for=user_re_pw>비밀번호 확인 (8 ~ 16자)</label>
+                            <input class="form_design" id="user_re_pw" type="password">
+                            <label for=user_name>이름</label>
+                            <input class="form_design" id="user_name" type="text">
+                            <label for=user_name>성별</label>
+                            <input class="form_design form_radio" id="user_male" name="sex" type="radio" value="남자" checked><label class="sex_label" for=user_male>남자</label>
+                            <input class="form_design form_radio" id="user_female" name="sex" type="radio" value="여자"><label class="sex_label" for=user_female>여자</label>
+                            <button class="form_design" id="signUp_submit" type="submit" aria-label="가입 버튼">
+                                가입하기
+                            </button>
+                        </form>
+                        <p>가입하면 Mybrary의 <strong>약관</strong>, <strong>데이터 정책</strong><br>
+                            및 <strong>쿠키 정책</strong>에 동의하게 됩니다.
+                        </p>
+                    </div>
+                    <div class="signIn_box">
+                        <p>계정이 있으신가요? <a href="./sign_in.html">로그인</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
