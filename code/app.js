@@ -1,19 +1,10 @@
-var http = require('http');
-var fs = require('fs');
-var app = http.createServer(function(request,response){
-    var url = request.url;
-    if(request.url == '/'){
-      url = '/index.html';
-    }
-    if(request.url == '/favicon.ico'){
-        response.writeHead(404);
-        response.end();
-        return;
-response.end();
-return;
-    }
-    response.writeHead(200);
-    response.end(fs.readFileSync(__dirname + url));
+const express = require('express')
+const app = express()
+
+app.use(express.static(__dirname));
+
+app.get("/", (req, res) =>  res.sendFile(__dirname + "index.html"))
+app.get('/sign_up', (req, res) => res.sendFile(__dirname + '/sign/sign_up.html'))
+app.get('/sign_in', (req, res) => res.sendFile(__dirname + '/sign/sign_in.html'))
  
-});
-app.listen(3000);
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
