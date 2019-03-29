@@ -4,9 +4,12 @@ const db = mysql.createConnection({
     host: 'mydb.culskowdevtz.ap-northeast-2.rds.amazonaws.com',
     user: 'duhyeon',
     password: 'Reg016260!!',
-    database: 'mybraryWeb'
+    database: 'mybraryWeb',
+    connectionLimit: 50,
+    queueLimit: 0,
+    waitForConnection: true
 });
 
-// db.connect();
+db.connect();
 
 module.exports = db;
