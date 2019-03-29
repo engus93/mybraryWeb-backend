@@ -58,12 +58,36 @@ function validate() {
         return false;
     }
 
+    sign_up_check();
+
+    // 정규식 체크 함수
     function check(re, what, message) {
         if (re.test(what.value)) {
             return true;
+        }else{
+            alert(message);
+            what.focus();
         }
-        alert(message);
-        what.focus();
-        //return false;
     }
+
+    // server에 fetch로 data 처리 함수
+    function sign_up_check() {
+
+        fetch("/sign_up_process", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: `user_id = ${signUp_form.user_id.value}&user_pw=${signUp_form.user_pw.value}&user_name=${signUp_form.user_name.value}&user_email=${signUp_form.user_email.value}&user_sex="남자"`
+        }).then(response => response.json())
+          .then(json => {
+            if (json.to_sign_up === true) {
+              alert("회원가입 완료");
+              window.location = "/sign_in"
+            } else if(json.to_sign_up === false){
+              alert("Server Error");
+            } 
+          })
+          .catch(err => console.log(err));
+      }
 }

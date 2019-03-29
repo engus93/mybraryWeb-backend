@@ -22,28 +22,21 @@ app.get('/sign_up', (req, res) => {
 // 회원가입 처리
 app.post('/sign_up_process', (req, res) => {
 
-    let post_user_id = req.body.user_id;
-    let post_user_pw = req.body.user_pwuser_pw;
-    let post_user_name = req.body.user_name;
-    let post_user_email = req.body.user_email;
-    let post_user_sex = req.body.sex;
+    console.log(req.body);
+
+    // let post_user_id = req.body.user_id;
+    // let post_user_pw = req.body.user_pwuser_pw;
+    // let post_user_name = req.body.user_name;
+    // let post_user_email = req.body.user_email;
+    // let post_user_sex = req.body.sex;
 
     // db.query(`insert into user_info(id, pw, name, mail, sex) 
     // values('${post_user_id}', '${post_user_pw}', '${post_user_name}', '${post_user_email}', '${post_user_sex}');`, function (error, results, fields) {
     //     if (error) {
     //         console.log(error);
-
-    //         res.send(`<script type="text/javascript">
-    //             alert("가입 실패");
-    //             window.history.back();
-    //         </script>`);
+    //         res.send({to_sign_up: false});
     //     }else{
-    //         console.log(results);
-
-            res.send(`<script type="text/javascript">
-                alert("가입 완료");
-                window.location="/";
-            </script>`);
+    //         res.send({to_sign_up: true});
     //     }
     // });
 
@@ -64,11 +57,14 @@ app.post('/sign_in_process', (req, res) => {
         if (error) {
             console.log(error);
         } else if(results == ""){
-            res.send({result:false})
+            res.send({to_sign_in: "user_id"})
+            // 아이디가 존재하지 않습니다.
         } else if (post_user_pw != results[0].pw){
-            res.send({result:false})
+            res.send({to_sign_in: "user_pw"})
+            // 비밀번호가 일치하지 않습니다.
         } else if (post_user_pw == results[0].pw){
-            res.send({result:true})
+            res.send({to_sign_in: "sign_in"})
+            // 로그인 성공
         }
     });
 
