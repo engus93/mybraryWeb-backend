@@ -1,5 +1,5 @@
 function validate() {
-    
+
     // 아이디가 적합한지 검사할 정규식
     const re = /^[a-zA-Z0-9]{6,12}$/
     
@@ -73,12 +73,20 @@ function validate() {
     // server에 fetch로 data 처리 함수
     function sign_up_check() {
 
+        let user_sex = "";
+
+        if(document.getElementById("user_male").checked){
+            user_sex = "남자"
+        }else {
+            user_sex = "여자"
+        }
+
         fetch("/sign_up_process", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: `user_id = ${signUp_form.user_id.value}&user_pw=${signUp_form.user_pw.value}&user_name=${signUp_form.user_name.value}&user_email=${signUp_form.user_email.value}&user_sex="남자"`
+          body: `user_id=${signUp_form.user_id.value}&user_pw=${signUp_form.user_pw.value}&user_name=${signUp_form.user_name.value}&user_email=${signUp_form.user_email.value}&user_sex=${user_sex}`
         }).then(response => response.json())
           .then(json => {
             if (json.to_sign_up === true) {

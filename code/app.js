@@ -25,10 +25,10 @@ app.post('/sign_up_process', (req, res) => {
     console.log(req.body);
 
     // let post_user_id = req.body.user_id;
-    // let post_user_pw = req.body.user_pwuser_pw;
+    // let post_user_pw = req.body.user_pw;
     // let post_user_name = req.body.user_name;
     // let post_user_email = req.body.user_email;
-    // let post_user_sex = req.body.sex;
+    // let post_user_sex = req.body.user_sex;
 
     // db.query(`insert into user_info(id, pw, name, mail, sex) 
     // values('${post_user_id}', '${post_user_pw}', '${post_user_name}', '${post_user_email}', '${post_user_sex}');`, function (error, results, fields) {
