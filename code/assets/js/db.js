@@ -1,5 +1,6 @@
 // mysql 계정
 const mysql = require('mysql');
+
 const db = mysql.createConnection({
     host: 'mydb.culskowdevtz.ap-northeast-2.rds.amazonaws.com',
     user: 'duhyeon',

@@ -7,7 +7,7 @@ function sign_in_check() {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: `user_id=${signIn_form.user_id}&user_pw=${signIn_form.user_pw}`
+    body: `user_id=${signIn_form.user_id.value}&user_pw=${signIn_form.user_pw.value}`
   })
     .then(response => response.json())
     .then(json => {
