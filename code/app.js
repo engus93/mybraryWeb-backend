@@ -29,6 +29,13 @@ app.post('/sign_up_process', (req, res) => {
     // let post_user_email = req.body.user_email;
     // let post_user_sex = req.body.user_sex;
 
+    crypto.randomBytes(64, (err, buf) => {
+        crypto.pbkdf2(req.body.user_pw, buf.toString('base64'), 162602, 64, 'sha512', (err, key) => {
+            console.log(buf.toString('base64'));    //해당 비밀번호 salt
+            console.log(key.toString('base64'));    //비밀번호
+        });
+    });
+
     // db.query(`insert into user_info(id, pw, name, mail, sex) 
     // values('${post_user_id}', '${post_user_pw}', '${post_user_name}', '${post_user_email}', '${post_user_sex}');`, function (error, results, fields) {
     //     if (error) {
@@ -51,36 +58,39 @@ app.post('/sign_in_process', (req, res) => {
 
     console.log(req.body.user_pw);
 
-    crypto.randomBytes(64, (err, buf) => {
-        crypto.pbkdf2(req.body.user_pw, buf.toString('base64'), 162602, 64, 'sha512', (err, key) => {
-            console.log(key.toString('base64'));
-        });
+    let post_user_id = req.body.user_id;
+    let post_user_pw = req.body.user_pw;
+
+    db.query(`select idx,id,pw,pw_salt from user_info where id = '${post_user_id}';`, function (error, results, fields) {
+
+        if (error) {
+            console.log(error);
+        } else if (results == "") {
+            res.send({ to_sign_in: "user_id" })
+            // 아이디가 존재하지 않습니다.
+        } else {
+
+            // 비밀번호 체크
+            crypto.pbkdf2(post_user_pw, results[0].pw_salt, 162602, 64, 'sha512', (err, key) => {
+
+                if (key.toString('base64') === results[0].pw) {
+                    res.send({ to_sign_in: "sign_in" })
+                    // 로그인 성공
+                } else {
+                    res.send({ to_sign_in: "user_pw" })
+                    // 비밀번호가 일치하지 않습니다.
+                }
+
+            })
+
+        }
+
     });
-
-    crypto.pbkdf2('입력비밀번호', '기존salt', 100000, 64, 'sha512', (err, key) => {
-        console.log(key.toString('base64') === '기존 비밀번호');
-    });
-
-    // let post_user_id = req.body.user_id;
-    // let post_user_pw = req.body.user_pw;
-
-    // db.query(`select idx,id,pw from user_info where id = '${post_user_id}';`, function (error, results, fields) {
-    //     if (error) {
-    //         console.log(error);
-    //     } else if(results == ""){
-    //         res.send({to_sign_in: "user_id"})
-    //         // 아이디가 존재하지 않습니다.
-    //     } else if (post_user_pw != results[0].pw){
-    //         res.send({to_sign_in: "user_pw"})
-    //         // 비밀번호가 일치하지 않습니다.
-    //     } else if (post_user_pw == results[0].pw){
-    //         res.send({to_sign_in: "sign_in"})
-    //         // 로그인 성공
-    //     }
-    // });
 
 })
  
 app.listen(3000, () => {
     console.log('Example app listening on port 3000!')
 })
+
+
