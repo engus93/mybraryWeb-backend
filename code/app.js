@@ -23,28 +23,33 @@ app.get('/sign_up', (req, res) => {
 // 회원가입 처리
 app.post('/sign_up_process', (req, res) => {
 
-    // let post_user_id = req.body.user_id;
-    // let post_user_pw = req.body.user_pw;
-    // let post_user_name = req.body.user_name;
-    // let post_user_email = req.body.user_email;
-    // let post_user_sex = req.body.user_sex;
+    let post_user_id = req.body.user_id;
+    let post_user_pw = req.body.user_pw;
+    let post_user_name = req.body.user_name;
+    let post_user_email = req.body.user_email;
+    let post_user_sex = req.body.user_sex;
+    let user_pw_salt;
 
     crypto.randomBytes(64, (err, buf) => {
         crypto.pbkdf2(req.body.user_pw, buf.toString('base64'), 162602, 64, 'sha512', (err, key) => {
-            console.log(buf.toString('base64'));    //해당 비밀번호 salt
-            console.log(key.toString('base64'));    //비밀번호
-        });
-    });
+            post_user_pw = key.toString('base64');    //비밀번호
+            user_pw_salt = buf.toString('base64');    //해당 비밀번호 salt
 
-    // db.query(`insert into user_info(id, pw, name, mail, sex) 
-    // values('${post_user_id}', '${post_user_pw}', '${post_user_name}', '${post_user_email}', '${post_user_sex}');`, function (error, results, fields) {
-    //     if (error) {
-    //         console.log(error);
-    //         res.send({to_sign_up: false});
-    //     }else{
-    //         res.send({to_sign_up: true});
-    //     }
-    // });
+            db.query(`insert into user_info(id, pw, pw_salt, name, mail, sex) 
+            values('${post_user_id}', '${post_user_pw}', '${user_pw_salt}', '${post_user_name}', '${post_user_email}', '${post_user_sex}');`, 
+            function (error, results, fields) {
+                if (error) {
+                    console.log(error);
+                    res.send({ to_sign_up: false });
+                } else {
+                    console.log(user_pw_salt);
+                    res.send({ to_sign_up: true });
+                }
+            })
+
+        })
+
+    });
 
 })
 
