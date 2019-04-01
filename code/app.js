@@ -9,7 +9,6 @@ const app = express();
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 
-
 // 메인 페이지
 app.get("/", (req, res) =>  {
     res.sendFile(__dirname + "/index.html")
@@ -18,6 +17,27 @@ app.get("/", (req, res) =>  {
 // 회원가입 페이지
 app.get('/sign_up', (req, res) => {
     res.sendFile(__dirname + '/sign/sign_up.html')
+})
+
+// 회원가입 처리
+app.post('/sign_up_id_process', (req, res) => {
+
+    let post_user_id = req.body.user_id;
+    
+    db.query(`select id from user_info where id = '${post_user_id}';`, function (error, results, fields) {
+
+        if (error) {
+            console.log(error);
+        } else if (results == "") {
+            res.send({to_sign_up_id: true})
+            // 사용가능 아이디
+        } else {
+            res.send({to_sign_up_id: false})
+            // 중복된 아이디
+        }
+
+    });
+
 })
 
 // 회원가입 처리
@@ -74,7 +94,6 @@ app.post('/sign_in_process', (req, res) => {
             res.send({ to_sign_in: "user_id" })
             // 아이디가 존재하지 않습니다.
         } else {
-
             // 비밀번호 체크
             crypto.pbkdf2(post_user_pw, results[0].pw_salt, 162602, 64, 'sha512', (err, key) => {
 

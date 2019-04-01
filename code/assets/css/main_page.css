@@ -25,3 +25,10 @@
 
 /* footer */
 .footer {}
+
+/* MediaQuery */
+
+/* 화면너비 0 ~1220px */
+@media (max-width: 1220px){
+    
+}
