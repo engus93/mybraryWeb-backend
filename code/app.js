@@ -9,7 +9,6 @@ const app = express();
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 
-
 // 메인 페이지
 app.get("/", (req, res) =>  {
     res.sendFile(__dirname + "/index.html")
@@ -95,7 +94,6 @@ app.post('/sign_in_process', (req, res) => {
             res.send({ to_sign_in: "user_id" })
             // 아이디가 존재하지 않습니다.
         } else {
-
             // 비밀번호 체크
             crypto.pbkdf2(post_user_pw, results[0].pw_salt, 162602, 64, 'sha512', (err, key) => {
 
