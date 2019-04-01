@@ -21,6 +21,27 @@ app.get('/sign_up', (req, res) => {
 })
 
 // 회원가입 처리
+app.post('/sign_up_id_process', (req, res) => {
+
+    let post_user_id = req.body.user_id;
+    
+    db.query(`select id from user_info where id = '${post_user_id}';`, function (error, results, fields) {
+
+        if (error) {
+            console.log(error);
+        } else if (results == "") {
+            res.send({to_sign_up_id: true})
+            // 사용가능 아이디
+        } else {
+            res.send({to_sign_up_id: false})
+            // 중복된 아이디
+        }
+
+    });
+
+})
+
+// 회원가입 처리
 app.post('/sign_up_process', (req, res) => {
 
     let post_user_id = req.body.user_id;

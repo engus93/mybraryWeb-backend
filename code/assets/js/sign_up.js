@@ -1,5 +1,6 @@
 // 포스트로 넘길 성별 변수
 let user_sex = "";
+let id_check = false;
 
 // 아이디가 적합한지 검사할 정규식
 const re = /^[a-zA-Z0-9]{6,12}$/
@@ -10,26 +11,16 @@ const re2 = /^[a-zA-Z0-9]{8,16}$/
 // 이메일이 적합한지 검사할 정규식
 const re3 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-
-function validate() {
-
-    regular_expression();
-
-    sex_check();
-
-    sign_up_check();
-    
-}
-
 // Input 정규식 체크 과정
 function regular_expression(){
+
     if (signUp_form.user_id == "") {
         alert("아이디를 입력해 주세요.");
         signUp_form.user_id.focus();
         return false;
     }
 
-    if (!check(re, signUp_form.user_id, "아이디를 입력 해주세요.")) {
+    if (!check(re, signUp_form.user_id, "적합하지 않은 아이디입니다.")) {
         return false;
     }
 
@@ -39,7 +30,7 @@ function regular_expression(){
         return false;
     }
 
-    if (!check(re2, signUp_form.user_pw, "비밀번호를 입력 해주세요.")) {
+    if (!check(re2, signUp_form.user_pw, "적합하지 않은 비밀번호입니다.")) {
         return false;
     }
 
@@ -71,6 +62,8 @@ function regular_expression(){
     if (!check(re3, signUp_form.user_email, "적합하지 않은 이메일 형식입니다.")) {
         return false;
     }
+
+    return true;
 }
 
 // 정규식 비교 함수
@@ -92,23 +85,53 @@ function sex_check(){
     }
 }
 
-// server에 fetch로 data 처리 함수
+// server에 fetch로 user_info insert 함수
 function sign_up_check() {
 
+    sex_check();
+
     fetch("/sign_up_process", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: `user_id=${signUp_form.user_id.value}&user_pw=${signUp_form.user_pw.value}&user_name=${signUp_form.user_name.value}&user_email=${signUp_form.user_email.value}&user_sex=${user_sex}`
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `user_id=${signUp_form.user_id.value}&user_pw=${signUp_form.user_pw.value}&user_name=${signUp_form.user_name.value}&user_email=${signUp_form.user_email.value}&user_sex=${user_sex}`
     }).then(response => response.json())
-      .then(json => {
-        if (json.to_sign_up === true) {
-          alert("회원가입 완료");
-          window.location = "/sign_in"
-        } else if(json.to_sign_up === false){
-          alert("Server Error");
-        } 
-      })
-      .catch(err => console.log(err));
-  }
+        .then(json => {
+            if (json.to_sign_up === true) {
+                alert("회원가입 완료");
+                window.location = "/sign_in"
+            } else if (json.to_sign_up === false) {
+                alert("Server Error");
+            }
+        })
+        .catch(err => console.log(err));
+
+}
+
+// server에 fetch 아이디 중복 체크
+function sign_up_id_check() {
+
+    if (regular_expression()) {
+
+        fetch("/sign_up_id_process", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `user_id=${signUp_form.user_id.value}`
+        }).then(response => response.json())
+            .then(json => {
+                console.log(json.to_sign_up_id);
+
+                if (json.to_sign_up_id === false) {
+                    alert("중복된 아이디입니다.")
+                    signUp_form.user_id.focus();
+                } else {
+                    sign_up_check();
+                }
+
+            })
+            .catch(err => console.log(err));
+    }
+}
