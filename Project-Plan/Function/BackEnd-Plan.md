@@ -33,16 +33,6 @@
 - contents (내용)
 - private (비공개 유무)
 
-#### 글 주제 (랜덤 단어)
-
-- 일 (각)
-- 월 (각)
-- 화 (각)
-- 수 (각)
-- 목 (각)
-- 금 (각)
-- 토 (각)
-
 <!-- Connect Link List -->
 
 [알라딘 api 메뉴얼 바로가기]: https://docs.google.com/document/d/1mX-WxuoGs8Hy-QalhHcvuV17n50uGI2Sg_GHofgiePE/edit

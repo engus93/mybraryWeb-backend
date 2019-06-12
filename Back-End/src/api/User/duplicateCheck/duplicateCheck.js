@@ -20,7 +20,6 @@ export default {
         return Boolean(exist);
       } catch (error) {
         console.log(error);
-        return;
       }
     }
   }
