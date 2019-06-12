@@ -1,4 +1,5 @@
 import { prisma } from "./../../../../generated/prisma-client";
+import { generateToken } from "./../../../utils";
 
 export default {
   Query: {
@@ -10,7 +11,7 @@ export default {
         });
         if (loggingUser !== null) {
           if (loggingUser.pw === pw) {
-            return "Hello World";
+            return generateToken(loggingUser.id);
           }
           return "Don't match your password";
         }
