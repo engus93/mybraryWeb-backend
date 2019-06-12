@@ -1,0 +1,38 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  pw: String!
+  username: String! @unique
+  authCheck: Boolean @default(value: false)
+  postList: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
+  likeList: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+}
+
+type Post {
+  id: ID! @id
+  title: String!
+  author: String
+  genre: String
+  stars: Int
+  contents: String!
+  public: Boolean @default(value: false)
+  user: User! @relation(name: "PostsOfUser")
+  files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
+  likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+}
+
+type Like {
+  id: ID! @id
+  user: User! @relation(name: "LikesOfUser")
+  post: Post! @relation(name: "LikesOfPost")
+  createdAt: DateTime! @createdAt
+}
+
+type File {
+  id: ID! @id
+  url: String!
+  post: Post! @relation(name: "FilesOfPost")
+  createdAt: DateTime! @createdAt
+}

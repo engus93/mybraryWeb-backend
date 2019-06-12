@@ -1,0 +1,38 @@
+type User {
+  id: ID!
+  email: String!
+  pw: String!
+  username: String!
+  authCheck: Boolean
+  postList: [Post!]!
+  likeList: [Like!]!
+  createdAt: String!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  author: String
+  genre: String
+  stars: Int
+  contents: String!
+  public: Boolean
+  user: User!
+  files: [File!]!
+  likes: [Like!]!
+  createdAt: String!
+}
+
+type Like {
+  id: ID!
+  user: User!
+  post: Post!
+  createdAt: String!
+}
+
+type File {
+  id: ID!
+  url: String!
+  post: Post!
+  createdAt: String!
+}
