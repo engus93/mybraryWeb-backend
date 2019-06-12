@@ -6,7 +6,7 @@ type User {
   authCheck: Boolean
   postList: [Post!]!
   likeList: [Like!]!
-  createdAt: DateTime!
+  createdAt: String!
 }
 
 type Post {
@@ -20,19 +20,19 @@ type Post {
   user: User!
   files: [File!]!
   likes: [Like!]!
-  createdAt: DateTime!
+  createdAt: String!
 }
 
 type Like {
   id: ID!
   user: User!
   post: Post!
-  createdAt: DateTime!
+  createdAt: String!
 }
 
 type File {
   id: ID!
   url: String!
   post: Post!
-  createdAt: DateTime!
+  createdAt: String!
 }
