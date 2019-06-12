@@ -1,0 +1,28 @@
+{
+  "name": "mybrary-backend",
+  "version": "1.0.0",
+  "description": "Mybrary web backend with prisma and graphql",
+  "main": "server.js",
+  "author": "Kim DuHyeon <engus983@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@sendgrid/mail": "^6.4.0",
+    "dotenv": "^8.0.0",
+    "graphql-tools": "^4.0.4",
+    "graphql-yoga": "^1.17.4",
+    "merge-graphql-schemas": "^1.5.8",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "prisma-client-lib": "^1.34.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  }
+}
