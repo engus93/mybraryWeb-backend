@@ -2,12 +2,12 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    confirmSecret: async (_, args) => {
-      const { email } = args;
+    mailAuth: async (_, args) => {
+      const { id } = args;
       try {
         await prisma.updateUser({
           where: {
-            email
+            id
           },
           data: {
             authCheck: true

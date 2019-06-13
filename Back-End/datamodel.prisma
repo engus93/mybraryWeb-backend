@@ -16,7 +16,7 @@ type Post {
   genre: String
   stars: Int
   contents: String!
-  public: Boolean @default(value: false)
+  secret: Boolean @default(value: false)
   user: User! @relation(name: "PostsOfUser")
   files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)

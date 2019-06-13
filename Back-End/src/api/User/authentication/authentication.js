@@ -10,14 +10,17 @@ export default {
           email
         });
         if (loggingUser !== null) {
-          if (loggingUser.pw === pw) {
+          if (!loggingUser.authCheck) {
+            return "Sign up is not complete";
+          } else if (loggingUser.pw === pw) {
             return generateToken(loggingUser.id);
           }
-          return "Don't match your password";
+          return "Don't match your password.";
         }
-        return "Don't find your email";
+        return "Don't find your email.";
       } catch (error) {
         console.log(error);
+        return false;
       }
     }
   }

@@ -16,7 +16,9 @@ type Post {
   genre: String
   stars: Int
   contents: String!
-  public: Boolean
+  secret: Boolean
+  isLiked: Boolean
+  likeCount: Int
   user: User!
   files: [File!]!
   likes: [Like!]!

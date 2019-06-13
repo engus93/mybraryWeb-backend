@@ -1,0 +1,11 @@
+type Mutation {
+  writePost(
+    title: String!
+    author: String
+    genre: String
+    stars: Int
+    contents: String!
+    secret: Boolean
+    files: [String!]
+  ): Post!
+}
