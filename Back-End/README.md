@@ -2,7 +2,7 @@
 
 ## Back-End
 
-#### Mybrary with Express + Prisma + React
+#### Mybrary with Express + Prisma + GraphQL + Apollo + React
 
 ## User Stories
 
