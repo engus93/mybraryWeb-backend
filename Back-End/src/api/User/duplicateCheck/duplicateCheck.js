@@ -17,9 +17,10 @@ export default {
             username: word
           });
         }
-        return Boolean(exist);
+        return exist;
       } catch (error) {
         console.log(error);
+        return false;
       }
     }
   }

@@ -18,6 +18,7 @@ export default {
         return "Don't find your email";
       } catch (error) {
         console.log(error);
+        return false;
       }
     }
   }

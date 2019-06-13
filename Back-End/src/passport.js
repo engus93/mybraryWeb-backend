@@ -12,7 +12,11 @@ export const authenticateJwt = (req, res, next) =>
     if (error) throw error;
 
     if (user) {
-      req.user = user;
+      req.user = {
+        id: user.id,
+        email: user.email,
+        username: user.username
+      };
     }
 
     next();

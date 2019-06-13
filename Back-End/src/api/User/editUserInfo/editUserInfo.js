@@ -1,11 +1,26 @@
+import { prisma } from "../../../../generated/prisma-client";
+
 export default {
   Mutation: {
-    editUserInfo: async (_, args) => {
+    editUserInfo: async (_, args, { request, isAuthenticated }) => {
+      isAuthenticated(request);
       const { username, pw } = args;
+      const {
+        user: { id }
+      } = request;
       try {
-        // edit user info
+        return prisma.updateUser({
+          where: {
+            id
+          },
+          data: {
+            pw,
+            username
+          }
+        });
       } catch (error) {
         console.log(error);
+        return;
       }
     }
   }
