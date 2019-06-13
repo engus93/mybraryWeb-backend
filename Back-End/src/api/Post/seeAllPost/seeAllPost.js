@@ -7,7 +7,7 @@ export default {
       const { page, set } = args;
       return prisma.posts({
         where: {
-          secret: true
+          secret: false
         },
         orderBy: "createdAt_DESC",
         skip: page * set,

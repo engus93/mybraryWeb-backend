@@ -17,6 +17,8 @@ type Post {
   stars: Int
   contents: String!
   secret: Boolean
+  isLiked: Boolean
+  likeCount: Int
   user: User!
   files: [File!]!
   likes: [Like!]!
