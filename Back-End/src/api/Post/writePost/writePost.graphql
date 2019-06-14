@@ -6,6 +6,6 @@ type Mutation {
     stars: Int
     contents: String!
     secret: Boolean
-    files: [String!]
+    files: [String!]!
   ): Post!
 }

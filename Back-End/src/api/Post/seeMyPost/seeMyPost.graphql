@@ -1,3 +1,3 @@
 type Query {
-  seeMyPost(page: Int!, set: Int!): [Post!]
+  seeMyPost(page: Int!, set: Int!, year: Int!, month: Int!): [Post!]!
 }

@@ -1,10 +1,10 @@
-import { ListBook } from "../../../aladinAPI";
+import { returnListBook } from "../../../aladinAPI";
 
 export default {
   Query: {
     ListBook: async (_, args) => {
       const { type } = args;
-      return ListBook(type);
+      return returnListBook(type);
     }
   }
 };

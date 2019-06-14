@@ -4,16 +4,25 @@ export default {
   Query: {
     seeMyPost: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { page, set } = args;
+      const { page, set, year, month } = args;
       const {
         user: { id }
       } = request;
-      console.log(id);
       return prisma.posts({
         where: {
-          user: {
-            id
-          }
+          AND: [
+            {
+              user: {
+                id
+              }
+            },
+            {
+              createdAt_gt: new Date(year, month - 1)
+            },
+            {
+              createdAt_lte: new Date(year, month)
+            }
+          ]
         },
         orderBy: "createdAt_DESC",
         skip: page * set,
