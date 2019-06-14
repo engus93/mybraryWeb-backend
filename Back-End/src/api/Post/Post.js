@@ -10,7 +10,9 @@ export default {
           {
             user: {
               id: user.id
-            },
+            }
+          },
+          {
             post: {
               id
             }
