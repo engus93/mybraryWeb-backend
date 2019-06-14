@@ -1,3 +1,5 @@
+# Prisma
+
 type User {
   id: ID!
   email: String!
@@ -37,4 +39,26 @@ type File {
   url: String!
   post: Post!
   createdAt: String!
+}
+
+# 알라딘 API
+
+type Book {
+  itemId: ID!
+  title: String!
+  author: String!
+  cover: String!
+  categoryName: String!
+}
+
+type DetailBook {
+  itemId: ID!
+  title: String!
+  author: String!
+  pubDate: String!
+  description: String!
+  cover: String!
+  categoryName: String!
+  publisher: String!
+  customerReviewRank: Int!
 }

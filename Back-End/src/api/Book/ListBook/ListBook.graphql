@@ -1,0 +1,3 @@
+type Query {
+  ListBook(type: String!): [Book!]
+}
