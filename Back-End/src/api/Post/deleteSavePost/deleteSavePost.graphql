@@ -1,0 +1,3 @@
+type Mutation {
+  deleteSavePost(postId: String!): Boolean!
+}
