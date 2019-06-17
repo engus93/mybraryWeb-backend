@@ -2,7 +2,7 @@ import { prisma } from "./../../../../generated/prisma-client";
 import { generateToken } from "./../../../utils";
 
 export default {
-  Query: {
+  Mutation: {
     authentication: async (_, args) => {
       const { email, pw } = args;
       try {
@@ -12,7 +12,9 @@ export default {
         if (loggingUser !== null) {
           if (!loggingUser.authCheck) {
             return "Sign up is not complete";
-          } else if (loggingUser.pw === pw) {
+          }
+          // Decryption
+          if (bcrypt.compare(pw, loggingUser.pw)) {
             return generateToken(loggingUser.id);
           }
           return "Don't match your password.";

@@ -1,7 +1,7 @@
 import { prisma } from "./../../../../generated/prisma-client";
 
 export default {
-  Query: {
+  Mutation: {
     duplicateCheck: async (_, args) => {
       const { word, action } = args;
       let exist;

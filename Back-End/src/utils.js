@@ -46,3 +46,25 @@ export const sendMail = userInfo => {
 
 // JWT 발급
 export const generateToken = id => jwt.sign({ id }, process.env.JWT_SECRET);
+
+// 오늘 날짜부터 내일까지 날짜 알아내기
+export const getToday = () => {
+  const getDate = new Date();
+  // 연도 월 일 순서로 배열에 담기
+  const toDay = [
+    getDate.getFullYear(),
+    getDate.getMonth() + 1,
+    getDate.getDate()
+  ];
+
+  const tomorrow = [
+    getDate.getFullYear(),
+    getDate.getMonth() + 1,
+    getDate.getDate() + 1
+  ];
+
+  return {
+    startTime: new Date([...toDay]),
+    endTime: new Date([...tomorrow])
+  };
+};

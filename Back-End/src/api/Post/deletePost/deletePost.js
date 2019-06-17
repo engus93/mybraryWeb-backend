@@ -4,9 +4,9 @@ export default {
   Mutation: {
     deletePost: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { id } = args;
+      const { postId } = args;
       try {
-        await prisma.deletePost({ id });
+        await prisma.deletePost({ id: postId });
         return true;
       } catch (error) {
         return false;

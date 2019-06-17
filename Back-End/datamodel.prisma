@@ -5,6 +5,7 @@ type User {
   username: String! @unique
   authCheck: Boolean @default(value: false)
   postList: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
+  savePostList: [Post!]! @relation(name: "SaveOfUser")
   likeList: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)
   createdAt: DateTime! @createdAt
 }
@@ -17,6 +18,7 @@ type Post {
   stars: Int
   contents: String!
   secret: Boolean @default(value: false)
+  likeCount: Int @default(value: 0)
   user: User! @relation(name: "PostsOfUser")
   files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)

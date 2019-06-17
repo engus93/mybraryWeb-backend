@@ -126,3 +126,11 @@ yarn add passport-jwt
 > `PassPort`로 `JWT`인증을 구현할 수 있도록 도와준다.
 
 ###### ※ JWT란 JsonWebToken의 약자이다.
+
+### bcrypt
+
+```bash
+yarn add bcrypt
+```
+
+> `bcrypt`로 패스워드를 암호화 하는데 사용한다.
