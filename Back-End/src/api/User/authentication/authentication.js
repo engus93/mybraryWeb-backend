@@ -1,5 +1,7 @@
 import { prisma } from "./../../../../generated/prisma-client";
 import { generateToken } from "./../../../utils";
+import { authenticateJwt } from "../../../passport";
+import bcrypt from "bcrypt";
 
 export default {
   Mutation: {
@@ -10,19 +12,19 @@ export default {
           email
         });
         if (loggingUser !== null) {
-          if (!loggingUser.authCheck) {
-            return "Sign up is not complete";
-          }
+          // if (!loggingUser.authCheck) {
+          //   throw "Sign up is not completed.";
+          // }
           // Decryption
           if (bcrypt.compare(pw, loggingUser.pw)) {
             return generateToken(loggingUser.id);
           }
-          return "Don't match your password.";
+          throw "비밀번호가 일치하지 않습니다.";
         }
-        return "Don't find your email.";
+        throw "아이디가 일치하지 않습니다.";
       } catch (error) {
-        console.log(error);
-        return false;
+        console.log(`1` + error);
+        return error;
       }
     }
   }
