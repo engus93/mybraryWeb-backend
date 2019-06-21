@@ -21,7 +21,7 @@ export default {
           }
           throw "비밀번호가 일치하지 않습니다.";
         }
-        throw "아이디가 일치하지 않습니다.";
+        throw "존재하지 않는 아이디입니다.";
       } catch (error) {
         console.log(`1` + error);
         return error;

@@ -9,7 +9,8 @@ export default {
       let aaa;
       try {
         // Encryption
-        const reqPw = await bcrypt.hash(pw, process.env.BCRYPT_OPTION);
+
+        const reqPw = await bcrypt.hash(pw, Number(process.env.BCRYPT_OPTION));
 
         const userInfo = await prisma.createUser({
           email,

@@ -8,13 +8,22 @@ export default {
       const {
         user: { id }
       } = request;
+
+      let reqPw;
+
+      if (pw !== undefined) {
+        reqPw = await bcrypt.hash(pw, process.env.BCRYPT_OPTION);
+      } else {
+        reqPw = pw;
+      }
+
       try {
         return prisma.updateUser({
           where: {
             id
           },
           data: {
-            pw,
+            pw: reqPw,
             username
           }
         });
