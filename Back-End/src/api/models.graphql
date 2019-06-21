@@ -1,11 +1,9 @@
 # Prisma
-
 type User {
   id: ID!
   email: String!
   pw: String!
   username: String!
-  authCheck: Boolean
   postList: [Post!]!
   savePostList: [Post!]!
   likeList: [Like!]!
@@ -49,6 +47,17 @@ type Book {
   title: String!
   author: String!
   cover: String!
+  categoryName: String!
+}
+
+type ListBook {
+  itemId: ID!
+  title: String!
+  author: String!
+  cover: String!
+  pubDate: String!
+  description: String!
+  publisher: String!
   categoryName: String!
 }
 

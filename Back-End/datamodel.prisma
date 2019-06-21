@@ -3,7 +3,6 @@ type User {
   email: String! @unique
   pw: String!
   username: String! @unique
-  authCheck: Boolean @default(value: false)
   postList: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
   savePostList: [Post!]! @relation(name: "SaveOfUser")
   likeList: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)

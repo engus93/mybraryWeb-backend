@@ -8,15 +8,16 @@ const aladinAxios = axios.create({
 });
 
 // ListBook API 상세 설정
-export const returnListBook = type =>
+export const returnListBook = (type, CategoryId = 0) =>
   aladinAxios({
     url: process.env.ALADIN_LIST,
-    method: "get",
+    method: "post",
     params: {
       ttbkey: process.env.ALADIN_API_KEY,
       QueryType: type,
       Cover: "Big",
       start: 1,
+      CategoryId,
       MaxResults: 10,
       SearchTarget: "Book",
       output: "js",
@@ -25,6 +26,20 @@ export const returnListBook = type =>
   })
     .then(({ data: { item } }) => item)
     .catch(err => console.log(err));
+
+// MainBookList
+export const returnMainListBook = async () => {
+  let mainListBook = [];
+
+  mainListBook.push(...(await returnListBook("Bestseller")));
+  mainListBook.push(...(await returnListBook("ItemNewSpecial")));
+  mainListBook.push(...(await returnListBook("ItemEditorChoice", 53476)));
+  mainListBook.push(...(await returnListBook("ItemEditorChoice", 1196)));
+  mainListBook.push(...(await returnListBook("ItemEditorChoice", 656)));
+  mainListBook.push(...(await returnListBook("ItemEditorChoice", 336)));
+
+  return mainListBook;
+};
 
 // DetailBook API 상세 설정
 export const returnDetailBook = itemId =>

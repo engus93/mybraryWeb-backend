@@ -3,8 +3,9 @@ import jwt from "jsonwebtoken";
 import sgMail from "@sendgrid/mail";
 
 // 가입 인증 Email 보내기
-
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const site = process.env.MYBRARY_SITE;
 
 export const sendMail = userInfo => {
   const msg = {
@@ -25,17 +26,12 @@ export const sendMail = userInfo => {
         <h3 style="color: white;">
           ${
             userInfo.username
-          }님 반갑습니다.<br />아래 인증 버튼을 누르시면 회원가입이 완료되며<br />
-          저희 사이트로 이동하게 됩니다. :)
+          }님 반갑습니다.<br />앞으로 잘 부탁드립니다. :)<br />
+          아래 버튼을 누르면 저희 사이트로 이동하게 됩니다. :)
         </h3>
-        <form action="http://www.naver.com" method="post">
-          <input type="hidden" value="${userInfo.id}" />
-          <input
-            type="submit"
-            style="font-size: 18px; padding: 0 10px; border-radius: 10px; border: none; background-color: white; cursor: pointer;"
-            value="Confrim"
-          />
-        </form>
+        <a href="${site}">
+          <button style="box-shadow: 0px 4px 5px rgba(0,15,11,0.15), 0px 12px 28px rgba(0,15,11,0.15); color: white; margin-top: 5px; padding: 2px 12px; box-sizing: content-box; border-radius: 10px; background-color: #f3aa42e8; font-weight: 600; font-size: 16px;">MYBRARY로 이동하기</button>
+        </a>
       </div>
     </div>
   </div>
