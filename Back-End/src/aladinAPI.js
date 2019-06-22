@@ -8,7 +8,7 @@ const aladinAxios = axios.create({
 });
 
 // ListBook API 상세 설정
-export const returnListBook = (type, CategoryId = 0) =>
+export const returnListBook = (type, CategoryId = 0, page = 1) =>
   aladinAxios({
     url: process.env.ALADIN_LIST,
     method: "post",
@@ -16,7 +16,7 @@ export const returnListBook = (type, CategoryId = 0) =>
       ttbkey: process.env.ALADIN_API_KEY,
       QueryType: type,
       Cover: "Big",
-      start: 1,
+      start: page,
       CategoryId,
       MaxResults: 10,
       SearchTarget: "Book",
