@@ -22,5 +22,16 @@ export default {
         return;
       }
     }
+  },
+  Mutation: {
+    ListBookPaging: async (_, args) => {
+      const { page, type, categoryId } = args;
+      try {
+        return returnListBook(type, categoryId, page);
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
   }
 };

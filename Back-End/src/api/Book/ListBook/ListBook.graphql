@@ -1,3 +1,7 @@
 type Query {
   ListBook(type: String!, categoryId: Int): [ListBook!]
 }
+
+type Mutation {
+  ListBookPaging(page: Int!, type: String!, categoryId: Int): [ListBook!]
+}
