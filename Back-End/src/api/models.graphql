@@ -70,5 +70,18 @@ type DetailBook {
   cover: String!
   categoryName: String!
   publisher: String!
-  customerReviewRank: Int!
+  fullDescription: String
+  fullDescription2: String
+  subInfo: SubInfo
+}
+
+type SubInfo {
+  toc: String
+  story: String
+  authors: [AuthorInfo]
+}
+
+type AuthorInfo {
+  authorName: String!
+  authorInfo: String!
 }

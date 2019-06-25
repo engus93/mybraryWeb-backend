@@ -52,14 +52,15 @@ export const returnDetailBook = itemId =>
       Cover: "Big",
       itemIdType: "ItemId",
       output: "js",
-      Version: 20131101
+      Version: 20131101,
+      OptResult: "authors,fulldescription,publisherFulldescription,Toc,Story"
     }
   })
     .then(({ data: { item } }) => item[0])
     .catch(err => console.log(err));
 
 // SearchBook API 상세 설정
-export const returnSearchBook = searhing =>
+export const returnSearchBook = (searhing, page = 1) =>
   aladinAxios({
     url: process.env.ALADIN_SEARCH,
     method: "get",
@@ -67,9 +68,9 @@ export const returnSearchBook = searhing =>
       ttbkey: process.env.ALADIN_API_KEY,
       Query: searhing,
       Cover: "Big",
+      start: page,
       QueryType: "Title",
       MaxResults: 10,
-      start: 1,
       SearchTarget: "Book",
       output: "js",
       Version: 20131101
