@@ -3,8 +3,8 @@ import axios from "axios";
 
 // 알라딘 API 기본 설정
 const aladinAxios = axios.create({
-  baseURL: process.env.ALADIN_BASE_URL,
-  timeout: 3000
+  baseURL: process.env.ALADIN_BASE_URL
+  // timeout: 3000
 });
 
 // ListBook API 상세 설정
