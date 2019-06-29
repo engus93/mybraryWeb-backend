@@ -12,12 +12,8 @@ type User {
 type Post {
   id: ID! @id
   title: String!
-  author: String
-  genre: String
-  stars: Int
   contents: String!
   secret: Boolean @default(value: false)
-  likeCount: Int @default(value: 0)
   user: User! @relation(name: "PostsOfUser")
   files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)

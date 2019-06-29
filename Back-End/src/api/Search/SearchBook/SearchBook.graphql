@@ -1,3 +1,7 @@
 type Query {
-  SearchBook(searching: String!): [Book!]!
+  SearchBook(searching: String!): [ListBook!]!
+}
+
+type Mutation {
+  SearchBookPaging(searching: String!, page: Int!): [ListBook!]
 }

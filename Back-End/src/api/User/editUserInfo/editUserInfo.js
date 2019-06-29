@@ -1,4 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
+import bcrypt from "bcrypt";
 
 export default {
   Mutation: {
@@ -9,22 +10,18 @@ export default {
         user: { id }
       } = request;
 
-      let reqPw;
-
-      if (pw !== undefined) {
-        reqPw = await bcrypt.hash(pw, process.env.BCRYPT_OPTION);
-      } else {
-        reqPw = pw;
-      }
-
       try {
         return prisma.updateUser({
           where: {
             id
           },
           data: {
-            pw: reqPw,
-            username
+            pw:
+              pw !== ""
+                ? // 비밀번호 암호화
+                  await bcrypt.hash(pw, Number(process.env.BCRYPT_OPTION))
+                : undefined,
+            username: username !== "" ? username : undefined
           }
         });
       } catch (error) {

@@ -1,3 +1,9 @@
-# Mybrary web
+# Mybrary Web (Back-End & Project Plan)
 
-### - [다른 사이트 보러가기](https://github.com/engus93/TIL)
+#### [- Mybrary web (Back-End) 보러가기)](https://github.com/engus93/mybraryWeb-backend/tree/master/Back-End)
+
+#### [- Mybrary web (Front-End 보러가기)](https://github.com/engus93/mybraryWeb-frontend)
+
+---
+
+#### - [TIL Repository로 이동하기](https://github.com/engus93/TIL)

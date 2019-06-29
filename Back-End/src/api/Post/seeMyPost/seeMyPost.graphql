@@ -1,3 +1,7 @@
 type Query {
-  seeMyPost(page: Int!, set: Int!, year: Int!, month: Int!): [Post!]!
+  seeMyPost(year: Int!, month: Int!): [Post!]
+}
+
+type Mutation {
+  seeMyPostPaging(page: Int!, year: Int!, month: Int!): [Post!]
 }
