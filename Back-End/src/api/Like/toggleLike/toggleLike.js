@@ -36,6 +36,20 @@ export default {
             ]
           });
         }
+        const updateLikeCount = await prisma
+          .likesConnection({
+            where: { post: { id: postId } }
+          })
+          .aggregate()
+          .count();
+        await prisma.updatePost({
+          where: {
+            id: postId
+          },
+          data: {
+            likeCount: updateLikeCount
+          }
+        });
         return true;
       } catch (error) {
         console.log(error);

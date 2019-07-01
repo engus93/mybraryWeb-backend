@@ -39,6 +39,7 @@ export default {
       const {
         user: { id }
       } = request;
+
       // Paging 갯수
       const set = 5;
 

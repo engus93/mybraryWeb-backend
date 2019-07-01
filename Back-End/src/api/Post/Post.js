@@ -18,13 +18,13 @@ export default {
             }
           }
         ]
-      }),
-    likeCount: ({ id }) =>
-      prisma
-        .likesConnection({
-          where: { post: { id } }
-        })
-        .aggregate()
-        .count()
+      })
+    // likeCount: ({ id }) =>
+    //   prisma
+    //     .likesConnection({
+    //       where: { post: { id } }
+    //     })
+    //     .aggregate()
+    //     .count()
   }
 };

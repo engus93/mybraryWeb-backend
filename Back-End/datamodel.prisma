@@ -17,6 +17,7 @@ type Post {
   user: User! @relation(name: "PostsOfUser")
   file: File @relation(name: "FileOfPost", onDelete: CASCADE, link: TABLE)
   likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)
+  likeCount: Int! @default(value: 0)
   createdAt: DateTime! @createdAt
 }
 
