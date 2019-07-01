@@ -1,3 +1,12 @@
 type Query {
-  seeAllPost(page: Int!, set: Int!, isBest: Boolean): [Post!]!
+  seeAllPost(year: Int!, month: Int!, isBest: Boolean): [Post!]!
+}
+
+type Mutation {
+  seeAllPostPaging(
+    year: Int!
+    month: Int!
+    page: Int!
+    isBest: Boolean
+  ): [Post!]!
 }

@@ -18,7 +18,7 @@ type Post {
   isLiked: Boolean
   likeCount: Int
   user: User!
-  files: [File!]!
+  file: File
   likes: [Like!]!
   createdAt: String!
 }
