@@ -15,7 +15,7 @@ type Post {
   contents: String!
   secret: Boolean @default(value: false)
   user: User! @relation(name: "PostsOfUser")
-  files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
+  file: File @relation(name: "FileOfPost", onDelete: CASCADE, link: TABLE)
   likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)
   createdAt: DateTime! @createdAt
 }
@@ -30,6 +30,6 @@ type Like {
 type File {
   id: ID! @id
   url: String!
-  post: Post! @relation(name: "FilesOfPost")
+  post: Post! @relation(name: "FileOfPost")
   createdAt: DateTime! @createdAt
 }
