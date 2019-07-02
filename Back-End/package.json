@@ -6,12 +6,15 @@
   "author": "Kim DuHyeon <engus983@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
     "@sendgrid/mail": "^6.4.0",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
+    "copy": "^0.3.2",
     "dotenv": "^8.0.0",
     "graphql-tools": "^4.0.4",
     "graphql-yoga": "^1.17.4",
@@ -23,12 +26,16 @@
     "prisma-client-lib": "^1.34.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.4",
     "nodemon": "^1.19.1"
   },
   "scripts": {
     "deploy": "prisma deploy",
     "generate": "prisma generate",
     "prisma": "yarn run deploy && yarn run generate",
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "babel src -d build",
+    "postbuild": "cd src && copy ./api/**/*.graphql ../build/api",
+    "start": "node build/server.js"
   }
 }
