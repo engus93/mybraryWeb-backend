@@ -17,7 +17,7 @@
 - [x] Delete Post
 - [x] See All Post
 - [x] See All Post
-- [ ] See Best Post
+- [x] See Best Post
 
 ## 기능
 
