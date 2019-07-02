@@ -1,0 +1,12 @@
+type Query {
+  editPostBring(postId: String!): Post!
+}
+
+type Mutation {
+  editPost(
+    postId: String!
+    title: String
+    contents: String
+    secret: Boolean
+  ): Boolean!
+}
