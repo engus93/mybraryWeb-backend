@@ -77,5 +77,4 @@ typings/
 
  # 내가 추가한 파일들
 generated
-prisma.yml 
 build
