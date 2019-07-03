@@ -11,19 +11,20 @@ export default {
         const loggingUser = await prisma.user({
           email
         });
+        let asdasd;
+        // 로그인 확인
         if (loggingUser !== null) {
-          // if (!loggingUser.authCheck) {
-          //   throw "Sign up is not completed.";
-          // }
-          // Decryption
-          if (bcrypt.compare(pw, loggingUser.pw)) {
+          const pwCheck = await bcrypt.compare(pw, loggingUser.pw);
+          if (pwCheck) {
             return generateToken(loggingUser.id);
+          } else {
+            return "비밀번호가 일치하지 않습니다.";
           }
-          throw "비밀번호가 일치하지 않습니다.";
+        } else {
+          return "존재하지 않는 아이디입니다.";
         }
-        throw "존재하지 않는 아이디입니다.";
       } catch (error) {
-        console.log(`1` + error);
+        console.log(error);
         return error;
       }
     }
