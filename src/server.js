@@ -28,7 +28,7 @@ setInterval(() => {
 }, 1200000); // every 20 minutes
 
 setInterval(() => {
-  http.get("https://mybrary-prisma-367d9b7c56.herokuapp.com/");
+  returnSearchBook("Null");
 }, 1200000); // every 20 minutes
 
 server.start({ port: PORT }, () => {
