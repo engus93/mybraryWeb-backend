@@ -25,6 +25,9 @@ server.express.use(authenticateJwt);
 /* Prevent Sleep in Heroku Server */
 setInterval(() => {
   http.get("https://web-mybrary.herokuapp.com/");
+}, 1200000); // every 20 minutes
+
+setInterval(() => {
   http.get("https://mybrary-prisma-367d9b7c56.herokuapp.com/");
 }, 1200000); // every 20 minutes
 
