@@ -27,10 +27,6 @@ setInterval(() => {
   http.get("https://web-mybrary.herokuapp.com/");
 }, 1200000); // every 20 minutes
 
-setInterval(() => {
-  returnSearchBook("Null");
-}, 1200000); // every 20 minutes
-
 server.start({ port: PORT }, () => {
   console.log(`✅　Server running on port http://localhost:${PORT}`);
 });
