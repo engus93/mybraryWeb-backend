@@ -1,6 +1,7 @@
 // Import module
 import logger from "morgan";
 import { GraphQLServer } from "graphql-yoga";
+import http from "http";
 
 // My files list
 import "./env";
@@ -20,6 +21,12 @@ const server = new GraphQLServer({
 // morgan dev mode => log check module
 server.express.use(logger("dev"));
 server.express.use(authenticateJwt);
+
+/* Prevent Sleep in Heroku Server */
+setInterval(() => {
+  http.get("https://web-mybrary.herokuapp.com/");
+  http.get("https://mybrary-prisma-367d9b7c56.herokuapp.com/");
+}, 1200000); // every 20 minutes
 
 server.start({ port: PORT }, () => {
   console.log(`✅　Server running on port http://localhost:${PORT}`);
